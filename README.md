@@ -43,7 +43,7 @@ A `.termrc` file is a YAML file which requires two keys: `commands` and a `layou
 
 <img src="https://rawgithub.com/briangonzalez/termrc/master/images/termrc-screen.png">
 
-You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of.
+You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of. Have a look at [this project's](https://github.com/briangonzalez/termrc/blob/master/.termrc) `.termrc` file for an example.
 
 CLI
 ---
