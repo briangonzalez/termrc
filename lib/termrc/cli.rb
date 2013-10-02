@@ -39,10 +39,9 @@ module Termrc
       say "None found.", :red if a.length < 1
     end
 
-    desc 'start', 'Start termrc file (Shortcut: s, Options: --file=<termc file>)'
-    method_option :file, :type => :string, :required => false
-    def start
-      file = options[:file] || '.termrc'
+    desc 'start', 'Start termrc file (Shortcut: s, Arg 0: file (optional) )'
+    def start(file=false)
+      file = file || '.termrc'
       raise Thor::Error.new "File '#{file}'' does not exist!" unless File.exist? file
 
       say "Starting termrc file: '#{file}'", :yellow
