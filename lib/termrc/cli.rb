@@ -49,8 +49,8 @@ module Termrc
       begin
         Termrc::Base.new( File.expand_path(file) )
       rescue Exception => e
-        raise Thor::Error.new "Error while starting termrc file!"
-        say e
+        say "\nError while starting termrc file:", :red
+        puts e
       end
     end
 
