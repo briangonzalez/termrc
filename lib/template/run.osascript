@@ -1,0 +1,35 @@
+
+tell application "iTerm"
+
+    -- Create a new terminal window.
+    set myterm to (make new terminal)
+
+    tell myterm
+
+      -- Create a new session.
+      set mysession to (make new session at the end of sessions)
+
+      -- Create rows.
+      [rows]
+
+      -- Sleep for a bit while we catch up.
+      [sleep]
+
+      -- Create panes within each row.
+      [panes]
+
+      -- Terminate session 1, which is unused.
+      terminate the first session
+
+      -- Sleep for a bit while we catch up.
+      [sleep]
+
+      -- Create all commands for a given pane (item).
+      [commands]
+
+    end tell
+
+    -- Reposition window.
+    set the bounds of the first window to {10, 10, 600, 600}
+
+end tell

@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+# Abort beautifully with ctrl+c.
+Signal.trap(:INT) { abort "\nAborting." }
+
+# Require
+dir =   File.expand_path('../..', __FILE__)
+require File.join(dir, 'lib', 'termrc')
+
+# Then start
+Termrc::Cli.start
