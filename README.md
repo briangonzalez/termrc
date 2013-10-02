@@ -1,7 +1,7 @@
 
 <img src="https://rawgithub.com/briangonzalez/termrc/master/images/osx.svg" width=25 style="margin-right: 10px"> termrc
 ======
-Keep your iTerm2 environments with you wherever you go.
+Take your iTerm2 environments with you wherever you go.
 
 Description
 -----------
@@ -39,15 +39,7 @@ layout:
 
 A `.termrc` file is a YAML file which requires two keys: `commands` and a `layout`. Each item in `layout` corresponds to a row of panes in iTerm2. So, for instance, the example `.termrc` file above would produce a new iTerm2 window with the following commands running inside each pane:
 
-```
------------------------
-| echo "1" | echo "2" |
-|---------------------|
-|      echo "3"       |
-|---------------------|
-| echo "4" | echo "5" |
------------------------
-```
+<img src="https://rawgithub.com/briangonzalez/termrc/master/images/termrc-screen.png">
 
 You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of.
 
