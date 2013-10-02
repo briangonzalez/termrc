@@ -17,7 +17,9 @@ $ termrc start
 
 .termrc file
 ----------
-The `.termrc` file is a [YAML](http://en.wikipedia.org/wiki/YAML) file which stores information about your project's environment. An environment, in this context, is an iTerm2 window with various panes, each with a different default command that is run when the pane opens. The `layout` dictates what your window looks like, while `commands` gives you a set of commands you can call for each pane.
+The `.termrc` file is a [YAML](http://en.wikipedia.org/wiki/YAML) file which stores information about your project's environment. An environment, in this context, is an iTerm2 window with various panes, each with a different default command that is run when the pane opens. The `layout` dictates what your window looks like, while `commands` gives you a set of commands you can call for each pane. 
+
+Place the `.termrc file` at your project's root, then call `termrc start`. Voila!
 
 **Example .termrc**
 
@@ -42,6 +44,16 @@ A `.termrc` file is a YAML file which requires two keys: `commands` and a `layou
 <img src="https://rawgithub.com/briangonzalez/termrc/master/images/termrc-screen.png">
 
 You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of.
+
+CLI
+---
+
+```bash
+$ termrc start      # Start termrc file (Options: file / defaults to .termrc file in current dir)
+$ termrc create     # Create termrc file       
+$ termrc list       # List termrc files in folder (Options: --folder=<folder>) 
+```
+
 
 License
 --------
