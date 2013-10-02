@@ -7,8 +7,8 @@ Description
 -----------
 Termrc allows you to store information about your project's environment for a given project in a small YAML file called a `.termrc` file. Restoring your project's environment is as simple as calling `termrc start`. Enjoy.
 
-Installation
-------------
+Quick Start
+-----------
 ```bash
 $ gem install termrc
 $ termrc create 
