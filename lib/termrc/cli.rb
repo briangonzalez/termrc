@@ -33,7 +33,7 @@ module Termrc
       folder = options[:folder] || '.'
       say "Looking for termrc files in '#{folder}':", :yellow
       
-      a = %x[ find #{folder} | grep "\.termrc" ]
+      a = `find #{folder} | grep -w \.termrc$`
       say a
 
       say "None found.", :red if a.length < 1
