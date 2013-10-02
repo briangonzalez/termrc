@@ -1,5 +1,5 @@
 
-termrc
+<img src="https://rawgithub.com/briangonzalez/termrc/master/images/osx.svg" width=25 style="margin-right: 10px"> termrc
 ======
 Keep your iTerm2 environments with you wherever you go.
 
@@ -17,7 +17,7 @@ $ termrc start
 
 .termrc file
 ----------
-The `.termrc` file is a [YAML](http://en.wikipedia.org/wiki/YAML) file which stores information about your project's environment. An environment, in this context, is an iTerm2 window with various panes each with a different default command.   
+The `.termrc` file is a [YAML](http://en.wikipedia.org/wiki/YAML) file which stores information about your project's environment. An environment, in this context, is an iTerm2 window with various panes, each with a different default command that is run when the pane opens. The `layout` dictates what your window looks like, while `commands` gives you a set of commands you can call for each pane.
 
 **Example .termrc**
 
@@ -34,6 +34,8 @@ layout:
   - [ 'world' ]               # row 2, with 1 pane
   - [ 'me', 'you' ]           # row 3, with 2 panes
 ``` 
+
+**The Result**
 
 A `.termrc` file is a YAML file which requires two keys: `commands` and a `layout`. Each item in `layout` corresponds to a row of panes in iTerm2. So, for instance, the example `.termrc` file above would produce a new iTerm2 window with the following commands running inside each pane:
 
