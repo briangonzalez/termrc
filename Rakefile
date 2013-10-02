@@ -15,7 +15,6 @@ namespace :gem do
   desc "release"
   task :release do
     gems = Dir.glob("*.gem").length
-    puts gems
     raise "0 or > 1 gem in directory; aborting!" if gems != 1
     puts %x[gem push *.gem]
     puts %x[rm -rf *.gem]

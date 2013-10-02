@@ -1,7 +1,7 @@
 
 <img src="https://rawgithub.com/briangonzalez/termrc/master/images/osx.svg" width=25 style="margin-right: 10px"> termrc
 ======
-Take your iTerm2 environments with you wherever you go.
+Take your [iTerm2](http://www.iterm2.com/) environments with you wherever you go.
 
 Description
 -----------
