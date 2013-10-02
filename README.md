@@ -23,11 +23,11 @@ The `.termrc` file is a [YAML](http://en.wikipedia.org/wiki/YAML) file which sto
 
 ```yaml
 commands:
-  here:       echo "1"
-  there:      echo "2"
-  me:         echo "4"
-  you:        echo "5"
-  world:      echo "3"
+  here:       echo "Hello, here."
+  there:      echo "Hello, there."
+  world:      echo "Hello, world."
+  me:         echo "Hello, me."
+  you:        echo "Hello, you."
 
 layout:
   - [ 'here', 'there' ]       # row 1, with 2 panes
