@@ -48,7 +48,7 @@ CLI
 ---
 
 ```bash
-$ termrc start      # Start termrc file (Options: file / defaults to .termrc file in current dir)
+$ termrc start      # Start termrc file (Shortcut: s, Argument 0: file (optional) )
 $ termrc create     # Create termrc file       
 $ termrc list       # List termrc files in folder (Shortcut: l, Argument 0: folder (optional))
 ```

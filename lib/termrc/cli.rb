@@ -27,11 +27,10 @@ module Termrc
       end
     end
 
-    desc 'list', 'List termrc files (Shortcut: l, Options: --folder=<folder>)'
-    method_option :folder, :type => :string, :required => false
-    def list
-      folder = options[:folder] || '.'
-      say "Looking for termrc files in '#{folder}':", :yellow
+    desc 'list', 'List termrc files in folder (Shortcut: l, Argument 0: folder (optional))'
+    def list(folder='.')
+      folder_description = folder == "." ? 'current folder' : "'#{folder}'"
+      say "Looking for termrc files in #{folder_description}:", :yellow
       
       a = `find #{folder} | grep -w \.termrc$`
       say a
@@ -39,7 +38,7 @@ module Termrc
       say "None found.", :red if a.length < 1
     end
 
-    desc 'start', 'Start termrc file (Shortcut: s, Arg 0: file (optional) )'
+    desc 'start', 'Start termrc file (Shortcut: s, Argument 0: file (optional) )'
     def start(file=false)
       file = file || '.termrc'
       raise Thor::Error.new "File '#{file}'' does not exist!" unless File.exist? file

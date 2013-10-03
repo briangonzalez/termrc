@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.executables   << 'termrc'
   gem.name          = "termrc"
-  gem.version       = '0.1.1'
+  gem.version       = '0.1.2'
   gem.license       = 'MIT'
 
   gem.add_runtime_dependency 'thor', '~> 0.18.0'
