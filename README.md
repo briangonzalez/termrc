@@ -1,4 +1,3 @@
-
 <img src="https://rawgithub.com/briangonzalez/termrc/master/images/osx.svg" width=25 style="margin-right: 10px"> termrc
 ======
 Take your [iTerm2](http://www.iterm2.com/) environments with you wherever you go.
@@ -51,7 +50,7 @@ CLI
 ```bash
 $ termrc start      # Start termrc file (Options: file / defaults to .termrc file in current dir)
 $ termrc create     # Create termrc file       
-$ termrc list       # List termrc files in folder (Options: --folder=<folder>) 
+$ termrc list       # List termrc files in folder (Shortcut: l, Argument 0: folder (optional))
 ```
 
 
