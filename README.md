@@ -44,7 +44,7 @@ A `.termrc` file is a YAML file which requires two keys: `commands` and a `layou
 
 You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of. Have a look at [this project's](https://github.com/briangonzalez/termrc/blob/master/.termrc)`.termrc` file for an example.
 
-** Tabs **
+**Tabs**
 
 You can automate tabs by providing an array of arrays, each array denoting a new tab and the layout within it. See [this template file](https://github.com/briangonzalez/termrc/blob/master/lib/template/termrc_with_tabs.template) for an example. 
 
