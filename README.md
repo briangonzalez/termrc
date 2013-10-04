@@ -21,6 +21,7 @@ The `.termrc` file is a [YAML](http://en.wikipedia.org/wiki/YAML) file which sto
 Place the `.termrc file` at your project's root, then call `termrc start`. Voila!
 
 **Example .termrc**
+
 ```yaml
 commands:
   here:       echo "Hello, here."
@@ -36,6 +37,7 @@ layout:
 ``` 
 
 **The Result**
+
 A `.termrc` file is a YAML file which requires two keys: `commands` and a `layout`. Each item in `layout` corresponds to a row of panes in iTerm2. So, for instance, the example `.termrc` file above would produce a new iTerm2 window with the following commands running inside each pane:
 
 <img src="https://rawgithub.com/briangonzalez/termrc/master/images/termrc-screen.png">
@@ -43,7 +45,8 @@ A `.termrc` file is a YAML file which requires two keys: `commands` and a `layou
 You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of. Have a look at [this project's](https://github.com/briangonzalez/termrc/blob/master/.termrc)`.termrc` file for an example.
 
 ** Tabs **
-You can automate tabs by providing an array of arrays, each array denoting a new tab and the layout within it. See [this template file]() for an example. 
+
+You can automate tabs by providing an array of arrays, each array denoting a new tab and the layout within it. See [this template file](https://github.com/briangonzalez/termrc/blob/master/lib/template/termrc_with_tabs.template) for an example. 
 
 CLI
 ---
