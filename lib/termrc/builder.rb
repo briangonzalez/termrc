@@ -10,25 +10,52 @@ module Termrc
     TEMPLATE_FILE   = File.join( File.expand_path('../..', __FILE__),  'template', 'run.osascript' )
     TEMPLATE        = File.read( TEMPLATE_FILE )
 
+    attr_accessor :layout
+    attr_accessor :commands
+
     def initialize(yml)
       @root       = yml['root']
       @commands   = yml['commands']
       @layout     = yml['layout']
+      @cmd_index  = 1
     end
 
     def run!
-      f = applescript_file
-      puts `/usr/bin/osascript #{f.path}`
-      f.unlink
+      applescript_files.each do |f|
+        puts `/usr/bin/osascript #{f.path}`
+        f.unlink
+      end
     end
 
-    def applescript_file
+    def applescript_files
+      if tabs?
+        return @layout.each_with_index.map{ |layout_array, index|
+          applescript_file(layout_array, index) 
+        }
+      else
+        return [ applescript_file(@layout, 0) ]
+      end
+    end
+
+    def applescript_file(layout_array, index)
       t = TEMPLATE
-      t = t.gsub("[rows]",      rows)
-      t = t.gsub("[sleep]",     sleep)
-      t = t.gsub("[panes]",     panes)
-      t = t.gsub("[commands]",  commands)
-      t
+           
+      if index > 0
+        # All other tabs.
+        t = t.gsub("[window_or_tab]",     new_tab)
+        t = t.gsub("[session]",           current_session)     
+        t = t.gsub("[terminate_unused]", terminate_session('last'))
+      else
+        # First tab.
+        t = t.gsub("[window_or_tab]",     new_window)
+        t = t.gsub("[session]",           new_session)     
+        t = t.gsub("[terminate_unused]",  terminate_session)
+      end
+
+      t = t.gsub("[rows]",      rows(layout_array))
+      t = t.gsub("[sleep]",     rest)
+      t = t.gsub("[panes]",     panes(layout_array))
+      t = t.gsub("[commands]",  commands(layout_array))
 
       file = Tempfile.new('termrc.osascript')
       file.write(t)
@@ -36,15 +63,15 @@ module Termrc
       file
     end
 
-    def rows
-      Array.new( row_count, new_row ).join("\n")
+    def rows(layout_array)
+      Array.new( row_count(layout_array), new_row ).join("\n")
     end
 
-    def panes
+    def panes(layout_array)
       cmd =   next_pane     # back to the top
       cmd =   next_pane     # back to the top
       
-      @layout.each do |cmds|
+      layout_array.each do |cmds|
         cmd << Array.new( cmds.length - 1, new_column ).join("\n")
         cmd << next_pane
         cmd << "\n"
@@ -53,28 +80,31 @@ module Termrc
       cmd
     end
 
-    def commands
+    def commands(layout_array)
       cmd = ""
 
-      index = 1
-      @layout.each do |commands|
+      layout_array.each do |commands|
         commands.each do |name|
-          cmd << execute_command(index, @commands[name] )
-          index += 1
+          cmd << execute_command( @cmd_index, @commands[name] )
+          @cmd_index += 1
         end
       end  
 
       cmd
     end
 
-    def row_count
-      @row_count ||= @layout.length
+    def row_count(layout_array)
+      layout_array.length
+    end
+
+    def tabs?
+      @layout[0].is_a?(Array) and @layout[0][0].is_a? Array
     end
 
     protected
 
-    def sleep
-      "do shell script \"sleep #{SLEEP_INTERVAL}\" \n"
+    def rest(i=SLEEP_INTERVAL)
+      "do shell script \"sleep #{i}\" \n"
     end
 
     def new_row
@@ -89,6 +119,29 @@ module Termrc
       keystroke("]", "command down")
     end
 
+    def new_tab
+      [
+        keystroke("t", "command down"),
+        "set myterm to (current terminal)",
+      ].join("\n")
+    end
+
+    def new_window
+      [ "set myterm to (make new terminal)" ].join("\n")
+    end
+
+    def new_session
+      "set mysession to (make new session at the end of sessions) "
+    end
+
+    def current_session
+      "set mysession to (current session) "
+    end
+
+    def terminate_session(which='first')
+      "terminate the #{which} session"
+    end
+
     def execute_command(item, command)
       command = command.gsub('"', '\\"')
       command = command.gsub("'", "\\'")
@@ -98,7 +151,7 @@ module Termrc
 
     def keystroke(key, using="")
       cmd =   "tell application \"System Events\" to keystroke \"#{key}\" "
-      cmd <<  "using #{using} \n" if  using
+      cmd <<  "using {#{using}} \n" if  using
       cmd <<  "\n"                if !using
       cmd
     end

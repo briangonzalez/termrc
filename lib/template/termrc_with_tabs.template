@@ -1,0 +1,27 @@
+root:
+  ~
+
+commands:
+  here:       echo "Hello, here."
+  there:      echo "Hello, there."
+  world:      echo "Hello, world."
+  me:         echo "Hello, me."
+  you:        echo "Hello, you."
+
+layout:
+  - [ 
+      # Tab 1 **
+      [ here, there ]         # row 1, with 2 panes
+    ]
+  - [ 
+      # Tab 2 **
+      [ here, there ],        # row 1, with 2 panes
+      [ world ],              # row 2, with 1 pane
+      [ me, you ]             # row 3, with 2 panes
+    ]
+  - [ 
+      # Tab 3 **
+      [ here, there ],        # row 1, with 2 panes
+      [ world ],              # row 2, with 1 pane
+      [ me, you ]             # row 3, with 2 panes
+    ]

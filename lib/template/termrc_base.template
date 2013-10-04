@@ -9,6 +9,6 @@ commands:
   you:        echo "Hello, you."
 
 layout:
-  - [ 'here', 'there' ]       # row 1, with 2 panes
-  - [ 'world' ]               # row 2, with 1 pane
-  - [ 'me', 'you' ]           # row 3, with 2 panes
+  - [ here, there ]       # row 1, with 2 panes
+  - [ world ]             # row 2, with 1 pane
+  - [ me, you ]           # row 3, with 2 panes

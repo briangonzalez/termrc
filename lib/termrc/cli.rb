@@ -43,7 +43,8 @@ module Termrc
       file = file || '.termrc'
       raise Thor::Error.new "File '#{file}'' does not exist!" unless File.exist? file
 
-      say "Starting termrc file: '#{file}'", :yellow
+      say "Starting termrc file: '#{file}'.", :yellow
+      say "[ Please wait until fully launched! ]", :red
       begin
         Termrc::Base.new( File.expand_path(file) )
       rescue Exception => e

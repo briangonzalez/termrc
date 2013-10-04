@@ -7,5 +7,5 @@ commands:
   rake:     rake -T
 
 layout:
-  - [ 'gs' ]
-  - [ 'rake' ]
+  - [ gs ]
+  - [ rake ]
