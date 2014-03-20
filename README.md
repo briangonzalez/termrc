@@ -46,7 +46,7 @@ You can supply an optional third key, `root`, which indicates the root directory
 
 **Tabs**
 
-You can automate tabs by providing an array of arrays, each array denoting a new tab and the layout within it. See [this template file](https://github.com/briangonzalez/termrc/blob/master/lib/template/termrc_with_tabs.template) for an example.
+You can automate tabs by providing an array of arrays, each array denoting a new tab and the layout within it. See [this template file](https://github.com/briangonzalez/termrc/blob/master/lib/template/termfile_with_tabs.template) for an example.
 
 CLI
 ---
