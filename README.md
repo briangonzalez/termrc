@@ -42,7 +42,7 @@ A `Termfile` file is a YAML file which requires two keys: `commands` and a `layo
 
 <img src="https://rawgithub.com/briangonzalez/termrc/master/images/termrc-screen.png">
 
-You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of. Have a look at [this project's](https://github.com/briangonzalez/termrc/blob/master/Termfile.test)`Termfile` file for an example.
+You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of. Have a look at [this project's Termfile](https://github.com/briangonzalez/termrc/blob/master/Termfile.test) for an example.
 
 **Tabs**
 
