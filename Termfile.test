@@ -1,0 +1,11 @@
+
+root:
+  ~/code/github/termrc-gem
+
+commands:
+  git_status:       git status
+  rake:             rake -T
+
+layout:
+  - [ git_status ]
+  - [ rake ]

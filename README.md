@@ -4,23 +4,23 @@ Take your [iTerm2](http://www.iterm2.com/) environments with you wherever you go
 
 Description
 -----------
-Termrc allows you to store information about your project's environment for a given project in a small YAML file called a `.termrc` file. Restoring your project's environment is as simple as calling `termrc start`. Enjoy.
+Termrc allows you to store information about your project's environment for a given project in a small YAML file called a `Termfile` file. Restoring your project's environment is as simple as calling `termrc start`. Enjoy.
 
 Quick Start
 -----------
 ```bash
 $ gem install termrc
-$ termrc create 
+$ termrc create
 $ termrc start
 ```
 
 .termrc file
 ----------
-The `.termrc` file is a [YAML](http://en.wikipedia.org/wiki/YAML) file which stores information about your project's environment. An environment, in this context, is an iTerm2 window with various panes, each with a different default command that is run when the pane opens. The `layout` dictates what your window looks like, while `commands` gives you a set of commands you can call for each pane. 
+The `Termfile` file is a [YAML](http://en.wikipedia.org/wiki/YAML) file which stores information about your project's environment. An environment, in this context, is an iTerm2 window with various panes, each with a different default command that is run when the pane opens. The `layout` dictates what your window looks like, while `commands` gives you a set of commands you can call for each pane.
 
-Place the `.termrc file` at your project's root, then call `termrc start`. Voila!
+Place the `Termfile` file at your project's root, then call `termrc start`. Voila!
 
-**Example .termrc**
+**Example Termfile**
 
 ```yaml
 commands:
@@ -34,26 +34,26 @@ layout:
   - [ here, there ]       # row 1, with 2 panes
   - [ world ]             # row 2, with 1 pane
   - [ me, you ]           # row 3, with 2 panes
-``` 
+```
 
 **The Result**
 
-A `.termrc` file is a YAML file which requires two keys: `commands` and a `layout`. Each item in `layout` corresponds to a row of panes in iTerm2. So, for instance, the example `.termrc` file above would produce a new iTerm2 window with the following commands running inside each pane:
+A `Termfile` file is a YAML file which requires two keys: `commands` and a `layout`. Each item in `layout` corresponds to a row of panes in iTerm2. So, for instance, the example `Termfile` file above would produce a new iTerm2 window with the following commands running inside each pane:
 
 <img src="https://rawgithub.com/briangonzalez/termrc/master/images/termrc-screen.png">
 
-You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of. Have a look at [this project's](https://github.com/briangonzalez/termrc/blob/master/.termrc)`.termrc` file for an example.
+You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of. Have a look at [this project's](https://github.com/briangonzalez/termrc/blob/master/Termfile.test)`Termfile` file for an example.
 
 **Tabs**
 
-You can automate tabs by providing an array of arrays, each array denoting a new tab and the layout within it. See [this template file](https://github.com/briangonzalez/termrc/blob/master/lib/template/termrc_with_tabs.template) for an example. 
+You can automate tabs by providing an array of arrays, each array denoting a new tab and the layout within it. See [this template file](https://github.com/briangonzalez/termrc/blob/master/lib/template/termrc_with_tabs.template) for an example.
 
 CLI
 ---
 
 ```bash
 $ termrc start      # Start termrc file (Shortcut: s, Argument 0: file (optional) )
-$ termrc create     # Create termrc file       
+$ termrc create     # Create termrc file
 $ termrc list       # List termrc files in folder (Shortcut: l, Argument 0: folder (optional))
 ```
 
@@ -64,7 +64,13 @@ Released under the MIT License.
 
 Questions?
 ----------
-Find me on [Twitter](http://twitter.com/brianmgonzalez).
+| ![twitter/brianmgonzalez](http://gravatar.com/avatar/f6363fe1d9aadb1c3f07ba7867f0e854?s=70](http://twitter.com/brianmgonzalez "Follow @brianmgonzalez on Twitter") |
+|---|
+| [Brian Gonzalez](http://briangonzalez.org) |
+
+Changelog
+---------
+* March 19, 2014 - Now using `Termfile`; panes now named with given command
 
 Resources
 ---------

@@ -30,7 +30,7 @@ module Termrc
     def applescript_files
       if tabs?
         return @layout.each_with_index.map{ |layout_array, index|
-          applescript_file(layout_array, index) 
+          applescript_file(layout_array, index)
         }
       else
         return [ applescript_file(@layout, 0) ]
@@ -39,16 +39,16 @@ module Termrc
 
     def applescript_file(layout_array, index)
       t = TEMPLATE
-           
+
       if index > 0
         # All other tabs.
         t = t.gsub("[window_or_tab]",     new_tab)
-        t = t.gsub("[session]",           current_session)     
+        t = t.gsub("[session]",           current_session)
         t = t.gsub("[terminate_unused]", terminate_session('last'))
       else
         # First tab.
         t = t.gsub("[window_or_tab]",     new_window)
-        t = t.gsub("[session]",           new_session)     
+        t = t.gsub("[session]",           new_session)
         t = t.gsub("[terminate_unused]",  terminate_session)
       end
 
@@ -70,7 +70,7 @@ module Termrc
     def panes(layout_array)
       cmd =   next_pane     # back to the top
       cmd =   next_pane     # back to the top
-      
+
       layout_array.each do |cmds|
         cmd << Array.new( cmds.length - 1, new_column ).join("\n")
         cmd << next_pane
@@ -85,10 +85,10 @@ module Termrc
 
       layout_array.each do |commands|
         commands.each do |name|
-          cmd << execute_command( @cmd_index, @commands[name] )
+          cmd << execute_command( @cmd_index, @commands[name], name )
           @cmd_index += 1
         end
-      end  
+      end
 
       cmd
     end
@@ -131,22 +131,25 @@ module Termrc
     end
 
     def new_session
-      "set mysession to (make new session at the end of sessions) "
+      "set mysession to (make new session at the end of sessions)"
     end
 
     def current_session
-      "set mysession to (current session) "
+      "set mysession to (current session)"
     end
 
     def terminate_session(which='first')
       "terminate the #{which} session"
     end
 
-    def execute_command(item, command)
+    def execute_command(item, command, name)
       command = command.gsub('"', '\\"')
       command = command.gsub("'", "\\'")
       command = "cd #{@root} && " + command if @root
-      "tell item #{item} of sessions to write text \"#{command}\" \n"
+      <<-EOH
+        tell item #{item} of sessions to set name to "#{name}" \n
+        tell item #{item} of sessions to write text \"#{command}\" \n
+      EOH
     end
 
     def keystroke(key, using="")
