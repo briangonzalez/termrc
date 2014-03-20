@@ -14,8 +14,8 @@ $ termrc create
 $ termrc start
 ```
 
-.termrc file
-----------
+The Termfile
+------------
 The `Termfile` file is a [YAML](http://en.wikipedia.org/wiki/YAML) file which stores information about your project's environment. An environment, in this context, is an iTerm2 window with various panes, each with a different default command that is run when the pane opens. The `layout` dictates what your window looks like, while `commands` gives you a set of commands you can call for each pane.
 
 Place the `Termfile` file at your project's root, then call `termrc start`. Voila!
