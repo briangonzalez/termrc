@@ -38,13 +38,18 @@ module Termrc
     end
 
     def applescript_file(layout_array, index)
+      t = generateContents(layout_array, index)
+      writeTempFile(t)
+    end
+
+    def generateContents(layout_array, index)
       t = TEMPLATE
 
       if index > 0
         # All other tabs.
         t = t.gsub("[window_or_tab]",     new_tab)
         t = t.gsub("[session]",           current_session)
-        t = t.gsub("[terminate_unused]", terminate_session('last'))
+        t = t.gsub("[terminate_unused]",  terminate_session('last'))
       else
         # First tab.
         t = t.gsub("[window_or_tab]",     new_window)
@@ -56,9 +61,12 @@ module Termrc
       t = t.gsub("[sleep]",     rest)
       t = t.gsub("[panes]",     panes(layout_array))
       t = t.gsub("[commands]",  commands(layout_array))
+      t
+    end
 
+    def writeTempFile(contents)
       file = Tempfile.new('termrc.osascript')
-      file.write(t)
+      file.write(contents)
       file.close
       file
     end
