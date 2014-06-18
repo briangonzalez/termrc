@@ -93,7 +93,12 @@ module Termrc
 
       layout_array.each do |commands|
         commands.each do |name|
-          cmd << execute_command( @cmd_index, @commands[name], name )
+          command = @commands[name]
+          if command
+            cmd << execute_command( @cmd_index, command, name )
+          else
+            puts "unknown command: #{name}"
+          end
           @cmd_index += 1
         end
       end
