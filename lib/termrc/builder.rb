@@ -17,6 +17,7 @@ module Termrc
       @root       = yml['root']
       @commands   = yml['commands']
       @layout     = yml['layout']
+      @columns    = yml['columns'] || false
       @cmd_index  = 1
     end
 
@@ -57,7 +58,7 @@ module Termrc
         t = t.gsub("[terminate_unused]",  terminate_session)
       end
 
-      t = t.gsub("[rows]",      rows(layout_array))
+      t = t.gsub("[primary]",   primary(layout_array))
       t = t.gsub("[sleep]",     rest)
       t = t.gsub("[panes]",     panes(layout_array))
       t = t.gsub("[commands]",  commands(layout_array))
@@ -71,8 +72,8 @@ module Termrc
       file
     end
 
-    def rows(layout_array)
-      Array.new( row_count(layout_array), new_row ).join("\n")
+    def primary(layout_array)
+      Array.new( primary_count(layout_array), @columns ? new_column : new_row ).join("\n")
     end
 
     def panes(layout_array)
@@ -80,7 +81,7 @@ module Termrc
       cmd =   next_pane     # back to the top
 
       layout_array.each do |cmds|
-        cmd << Array.new( cmds.length - 1, new_column ).join("\n")
+        cmd << Array.new( cmds.length - 1, @columns ? new_row : new_column ).join("\n")
         cmd << next_pane
         cmd << "\n"
       end
@@ -106,7 +107,7 @@ module Termrc
       cmd
     end
 
-    def row_count(layout_array)
+    def primary_count(layout_array)
       layout_array.length
     end
 

@@ -9,13 +9,13 @@ tell application "iTerm"
       -- Create a new session.
       [session]
 
-      -- Create rows.
-      [rows]
+      -- Create primary divider (rows or columns).
+      [primary]
 
       -- Sleep for a bit while we catch up.
       [sleep]
 
-      -- Create panes within each row.
+      -- Create panes within each primary divider.
       [panes]
 
       -- Terminate first or last session, which are unused.
