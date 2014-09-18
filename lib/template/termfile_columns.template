@@ -1,0 +1,16 @@
+root:
+  ~
+
+columns: true
+
+commands:
+  here:       echo "Hello, here."
+  there:      echo "Hello, there."
+  world:      echo "Hello, world."
+  me:         echo "Hello, me."
+  you:        echo "Hello, you."
+
+layout:
+  - [ here, there, here, there ]       # row 1, with 2 panes
+  - [ world ]             # row 2, with 1 pane
+  - [ me, you ]           # row 3, with 2 panes
