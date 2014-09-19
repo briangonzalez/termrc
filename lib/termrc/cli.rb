@@ -8,11 +8,12 @@ module Termrc
   class Cli < Thor
     include Thor::Actions
 
-    map 'c' => :create
-    map 'l' => :list
-    map 's' => :start
+    map 'c'     => :create
+    map 'init'  => :create
+    map 'l'     => :list
+    map 's'     => :start
 
-    desc 'create', 'Create Termfile (Shortcut: c)'
+    desc 'create', 'Create Termfile (Shortcut: c / init)'
     def create
       if (File.exist? '.termrc' or File.exists? 'Termfile')
         say_this "Error: 'Termfile' already exists!"

@@ -1,7 +1,7 @@
 root:
   ~
 
-columns: true
+layout_type: column
 
 commands:
   here:       echo "Hello, here."

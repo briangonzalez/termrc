@@ -17,7 +17,7 @@ module Termrc
       @root       = yml['root']
       @commands   = yml['commands']
       @layout     = yml['layout']
-      @columns    = yml['columns'] || false
+      @columns    = yml['layout_type'] == 'column' || false
       @cmd_index  = 1
     end
 

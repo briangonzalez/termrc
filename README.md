@@ -42,7 +42,9 @@ A `Termfile` file is a YAML file which requires two keys: `commands` and a `layo
 
 <img src="https://rawgithub.com/briangonzalez/termrc/master/images/termrc-screen.png">
 
-You can supply an optional third key, `root`, which indicates the root directory you'd like each command to be run inside of. Have a look at [this project's Termfile](https://github.com/briangonzalez/termrc/blob/master/Termfile.test) for an example.
+You can supply an optional key, `root`, which indicates the root directory you'd like each command to be run inside of. Have a look at [this project's Termfile](https://github.com/briangonzalez/termrc/blob/master/Termfile.test) for an example.
+
+You can also supply a `layout_type` value, either `row` or `column`, which denotes whether to use rows or columns as the means for splitting the window. This defaults to `layout_type: row`.
 
 **Tabs**
 
