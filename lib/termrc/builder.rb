@@ -16,15 +16,24 @@ module Termrc
     def initialize(yml)
       @root       = yml['root']
       @commands   = yml['commands']
-      @layout     = yml['layout']
-      @columns    = yml['layout_type'] == 'column' || false
-      @cmd_index  = 1
+      @windows    = yml['windows'] || []
+
+      #support traditional format not using multiple windows
+      if yml['layout']
+        @windows << {'layout' => yml['layout'], 'layout_type' => yml['layout_type'] }
+      end
     end
 
     def run!
-      applescript_files.each do |f|
-        puts `/usr/bin/osascript #{f.path}`
-        f.unlink
+      @windows.each do |current_window|
+        @cmd_index  = 1
+        @layout = current_window['layout']
+        @columns = current_window['layout_type'] == 'column' || false
+
+        applescript_files.each do |f|
+          puts `/usr/bin/osascript #{f.path}`
+          f.unlink
+        end
       end
     end
 
