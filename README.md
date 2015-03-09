@@ -76,6 +76,7 @@ Questions?
 
 Changelog
 ---------
+* March 9, 2015 - Release 0.2.3; support for windows (not the OS)
 * March 19, 2014 - Now using `Termfile`; panes now named with given command
 
 Resources
