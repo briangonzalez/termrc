@@ -50,6 +50,10 @@ You can also supply a `layout_type` value, either `row` or `column`, which denot
 
 You can automate tabs by providing an array of arrays, each array denoting a new tab and the layout within it. See [this template file](https://github.com/briangonzalez/termrc/blob/master/lib/template/termfile_with_tabs.template) for an example.
 
+** Windows **
+
+You can also use termrc to open multiple windows [like so](https://github.com/briangonzalez/termrc/blob/master/lib/template/termfile_with_multiple_windows.template).
+
 CLI
 ---
 
