@@ -14,7 +14,7 @@ module Termrc
     attr_accessor :commands
 
     def initialize(yml)
-      @root       = yml['root']
+      @root       = yml['root'] || File.dirname( File.expand_path('./Termfile') )
       @commands   = yml['commands']
       @windows    = yml['windows'] || []
 
