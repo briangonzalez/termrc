@@ -1,10 +1,7 @@
 
-### ----
-#### Notice:
+#### termrc has moved!
 > Project rewritten in node and jxa, called 🔥[mert](https://github.com/eggplanetio/mert)🔥. 
 > Please file any new issues there.
-
-### ----
 
 <img src="https://rawgithub.com/briangonzalez/termrc/master/images/osx.svg" width=25 style="margin-right: 10px"> termrc
 ======
