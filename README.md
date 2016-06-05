@@ -1,5 +1,5 @@
 
-#### termrc has moved!
+#### ⚠️ termrc has moved! ⚠️
 > Project rewritten in node and jxa, called 🔥[mert](https://github.com/eggplanetio/mert)🔥. 
 > Please file any new issues there.
 
